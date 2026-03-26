@@ -3,7 +3,7 @@ import { Form, Input, Label} from "react-aria-components";
 import styles from './FileUploaded.module.scss';
 
 
-interface FileUploadProps {
+export interface FileUploadProps {
     onUpload:(e:ChangeEvent<HTMLInputElement>)=>void;
     label:string;
 }

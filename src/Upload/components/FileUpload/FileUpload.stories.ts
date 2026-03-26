@@ -18,6 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary:Story = {
     args:{
-        label:'Upload CSV Document:'
+        label:'Upload CSV Document:',
+        onUpload:(e)=>console.log(e)
     },
 };
