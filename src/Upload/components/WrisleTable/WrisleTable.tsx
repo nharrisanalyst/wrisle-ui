@@ -1,5 +1,6 @@
 import { type ReactElement } from "react";
-import {Table, TableHeader, Column, TableBody, Row, Cell} from 'react-aria-components'
+import {Table, TableHeader, Column, TableBody, Row, Cell} from 'react-aria-components';
+import styles from './WrisleTable.module.scss';
 
 interface WrisleTableProps<T> {
      columns:{
@@ -26,6 +27,7 @@ const WrisleTable=<T extends {[key:string]:string|number|null, id:string},>({col
     return(
     <Table
     aria-label='data'
+    className={styles.wrisleTable}
     >
         <TableHeader columns={columns} >
             {column =>(

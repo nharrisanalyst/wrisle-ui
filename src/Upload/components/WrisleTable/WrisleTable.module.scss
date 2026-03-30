@@ -1,0 +1,52 @@
+
+
+
+.wrisleTable{
+    --wrisle-border:#747678;
+    --wrsile-font-color:rgb(42, 42, 42); 
+    border:1px solid var(--wrisle-border);
+    border-collapse: separate;
+    border-spacing: 0;
+    color:var(--wrsile-font-color);
+    border-radius: 2px;
+    thead{
+        background-color: #eee;
+        font-weight: bold;
+        vertical-align: middle;
+    }
+    th, td{
+        padding:4px 3px;
+        border-right: 1px solid #ddd;
+        
+        border-color: #ddd;
+
+         &:last-child{
+            border-right:0px;
+        }
+
+    }
+
+    th{
+        border-bottom: 1px solid var(--wrisle-border);
+    }
+    tr{
+        font-size: .785714286em;
+        vertical-align: middle;
+       
+         &:last-child{
+            td{
+            border-bottom:0px;
+            }
+        }
+    td {
+        font-weight: lighter;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px dotted #ddd;
+        padding: 4px 3px;
+        text-align:center;
+
+        
+        
+    }
+}
+}
