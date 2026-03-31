@@ -15,5 +15,10 @@ const initStore:{dataSets:CSVDATAStore}={dataSets:{}};
 
 
 export const useData =create(combine(initStore,(set)=>({
-    addDataSet:(dataSet:CSVDATA)=> set((state)=>({dataSets:{...state.dataSets, dataSet}}))
-})))
+    addDataSet:(dataSet:CSVDATA)=> 
+        set((state)=>
+            ({dataSets:
+                {...state.dataSets, 
+                    [dataSet['id']]:dataSet
+                }}))
+        })))

@@ -20,7 +20,6 @@ const FileUpload =({label}:FileUploadProps)=>{
         const parse = async (file:File) => {
             //parses file async
             const uploaded = await parseCSV(file);
-            console.log(uploaded)
             addDataSet(uploaded)
        }
         //gets file and parses and loads into state

@@ -1,5 +1,5 @@
 import { type ReactElement } from "react";
-import {Table, TableHeader, Column, TableBody, Row, Cell} from 'react-aria-components';
+import {Table, TableHeader, Column, TableBody, Row, Cell, type Key} from 'react-aria-components';
 import styles from './WrisleTable.module.scss';
 
 export interface WrisleTableProps<T> {
@@ -15,7 +15,7 @@ export interface WrisleTableProps<T> {
 
 
 
-const WrisleTable=<T extends {[key:string]:string|number|null, id:string},>({columns, rows}:WrisleTableProps<T>)=>{
+const WrisleTable=<T extends {[key:string]:string|number|null, superID:Key},>({columns, rows}:WrisleTableProps<T>)=>{
     
     if(columns.length ===0 || rows.length ===0) return(
         <div>
@@ -24,6 +24,8 @@ const WrisleTable=<T extends {[key:string]:string|number|null, id:string},>({col
             </h3>
         </div>
     )
+
+    console.log('this is important', columns, rows);
     return(
     <Table
     aria-label='data'
@@ -38,7 +40,7 @@ const WrisleTable=<T extends {[key:string]:string|number|null, id:string},>({col
         </TableHeader>
         <TableBody items={rows}>
             {item=>(
-                <Row columns={columns}>
+                <Row id={item.superID as Key} columns={columns}>
                     {column =><Cell>{item[column.key] as string|number|null}</Cell> }
                 </Row>
             )}

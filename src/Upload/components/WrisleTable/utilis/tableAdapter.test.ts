@@ -10,6 +10,11 @@ test('tableadapter takes in CSV parsed data and returns table column and rows', 
     expect(tableData.columns[1].key).toBe('age')
     expect(tableData.columns[2].key).toBe('sex')
 
-    expect(tableData.rows).toBe(testCSV);
+
+
+    expect(tableData.rows[0]).toHaveProperty('superID');
+    expect(tableData.rows[0]).toHaveProperty('name')
+    expect(tableData.rows[0]).toHaveProperty('age')
+    expect(tableData.rows[0]).toHaveProperty('sex')
 
 })
