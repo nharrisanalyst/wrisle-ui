@@ -2,7 +2,7 @@ import { type ReactElement } from "react";
 import {Table, TableHeader, Column, TableBody, Row, Cell} from 'react-aria-components';
 import styles from './WrisleTable.module.scss';
 
-interface WrisleTableProps<T> {
+export interface WrisleTableProps<T> {
      columns:{
         key:keyof T;
         label:string;
