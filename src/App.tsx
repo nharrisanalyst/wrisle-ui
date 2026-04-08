@@ -22,7 +22,7 @@ function App() {
         tableData.map(t=>(
           <article key={t.id}>
             <h3>{t.title}</h3>
-            <WrisleTable columns={t.data.columns} rows={t.data.rows.slice(0,100)} />
+            <WrisleTable columns={t.data.columns} rows={t.data.rows} itemHeight={25} />
           </article>
         ))
       }

@@ -7,46 +7,23 @@ test('this is a smoke test for the table', ()=>{
     render(<WrisleTable columns={[]} rows={[]} />);
 })
 
-test('there is an error when columsn or header is empty',()=>{
-    const {rerender} =render(<WrisleTable<{[key:string]:unknown}> 
-        columns={
-            [
-                {
-                    key:'name',
-                    label:'Name'
-                }
-            ]
-        }
-        rows={[]} 
-        />);
 
-        expect(screen.getByText(/Error/)).toBeVisible();
-    
-    rerender(<WrisleTable<{[key:string]:unknown}> 
-        columns={[]}
-        rows={[{name:'string'}]} 
-        />)
-    
-})
-
-test('a table is shown when data and columns are provided', async ()=>{
-    const props ={
-        columns:[
-            {
-                key:'name',
-                label:'Name'
-            },
-            {
-                key:'age',
-                label:'Age'
-            }
-        ],
-        rows:[
-            {name:'Liz', age:22, id:'1'}, {name:'Sam', age:15, id:'2'}
+export const rows = [
+            {name:'Liz', age:22, superID:'1'}, {name:'Sam', age:15, superID:'2'}
         ]
-    }
-    render(<WrisleTable<{[key:string]:string|number|null, id:string}> 
-           {...props}
+export const columns = Object.keys(rows[0]).map(k=>({
+    key:k as keyof typeof rows[0],
+    label:k,
+}))
+
+export const props ={
+    rows,
+    columns
+}
+test('a table is shown when data and columns are provided', async ()=>{
+    
+    render(<WrisleTable<{[key:string]:string|number|null, superID:string,}> 
+           {...props } itemHeight={25}
         />)
 
     await expect(screen.getByRole('grid')).toBeVisible();

@@ -1,4 +1,4 @@
-import { afterEach } from 'vitest'
+import { afterEach, vi } from 'vitest'
 import { cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom';
 
@@ -6,3 +6,13 @@ import '@testing-library/jest-dom';
 afterEach(() => {
   cleanup();
 });
+
+
+
+const ResizeObserverMock = vi.fn(class {
+  observe = vi.fn();
+  unobserve = vi.fn();
+  disconnect = vi.fn();
+});
+
+vi.stubGlobal('ResizeObserver', ResizeObserverMock);

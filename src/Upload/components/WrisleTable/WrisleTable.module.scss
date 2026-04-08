@@ -1,6 +1,5 @@
 
 
-
 .wrisleTable{
     --wrisle-border:#747678;
     --wrsile-font-color:rgb(42, 42, 42); 
@@ -9,41 +8,77 @@
     border-spacing: 0;
     color:var(--wrsile-font-color);
     border-radius: 2px;
-    thead{
-        background-color: #eee;
-        font-weight: bold;
-        vertical-align: middle;
+    font-size: .985714286em;
+    border-spacing: 0;
+    display:flex;
+    flex-direction: column;
+    border-collapse: separate;
+    border-top: none;
+    max-height: 90dvh;
+    height:300px;
+    .wrisleSubCont{
+        display:flex;
+        flex-direction: row;
+
+    .wrisleThead{
+            background-color: #eee;
+            font-weight: bold;
+            vertical-align: middle;
+            position: sticky;
+            top: 0px;
+            z-index: 1;
+        
+            border-collapse: separate;
+            display: flex;
+        }
+        .wrisleScrollControl{
+            flex-shrink: 1;
+        }
     }
-    th, td{
+    .wrisleTH, .wrisleTD{
         padding:4px 3px;
         border-right: 1px solid #ddd;
         
         border-color: #ddd;
+        flex:1;
 
          &:last-child{
             border-right:0px;
         }
 
     }
-
-    th{
-        border-bottom: 1px solid var(--wrisle-border);
+    .wriseListCont{
+        overflow:hidden;
     }
-    tr{
-        font-size: .785714286em;
+
+    .wrisleThead{
+        border-bottom: 1px solid var(--wrisle-border);
+        border-top:1px solid var(--wrisle-border);
+        //padding-inline: 2px;
+    }
+    .wrisleTR{
         vertical-align: middle;
+        height: 25px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-content: end;
+        align-items: center;
+        //padding-inline: 2px;
        
          &:last-child{
             td{
             border-bottom:0px;
             }
         }
-    td {
+    .wrisleTD {
         font-weight: lighter;
         border-right: 1px solid #ddd;
         border-bottom: 1px dotted #ddd;
         padding: 4px 3px;
         text-align:center;
+        height: 25px;
+        overflow: hidden;
 
         
         
