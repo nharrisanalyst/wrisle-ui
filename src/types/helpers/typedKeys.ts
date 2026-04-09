@@ -1,5 +1,5 @@
 /*
-   function for typing keys to an object actual keys
+   function for typing keys to an object's actual keys
 
 
 */

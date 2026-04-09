@@ -1,43 +1,54 @@
-import { typedKeys } from "../../../../../types/helpers/typedKeys";
+import {type WrisleTableProps} from '../../WrisleTable';
 
 
 
-interface ColumnWidth<T>  {
-    data:{
-        rows:T[];
-        columns:{
-                key:keyof T;
-                label:string;
-                render?:(value:T[keyof T])=> ReactElement;
-             }[];
-    },
-    width?:number
+
+
+
+interface ColumnWidth<T extends object> extends WrisleTableProps<T>  {
+    width:number;
+    maxWordLength:number;
 }
 
+/*
+   columnWidth takes table data and returns the width of each column
+
+   dependent on longest data 
+   longest that data can be is 15
+
+   @param data {columns, width}
+   @param width  (per ch default is 1 )
+
+   return 
+   {key: [length:number]
+   ;
+   }
+ 
+*/
 
 
-export const columnWidth =<T>(
-        data:ColumnWidth<T>['data'], 
-        width:ColumnWidth<T>['width'] = 1
-    ):{ [P in keyof T ]: number } => {
 
-        const dataLongest:Record<keyof T,number> = Object.create(null);
-        data.columns.forEach(c=>{
-            dataLongest[c.key] = String(c.key).length;
-        })
+export const columnWidth =<T extends object,>(
+        {columns, rows, width=13, maxWordLength=15}:ColumnWidth<T>
+    ):Record<typeof columns[number]['key'],number> => {
 
-        data.rows.forEach(r=>{
-            data.columns.forEach(c=>{
-                if(dataLongest[c.key]<15 && dataLongest[c.key] < String(r[c.key]).length){
-                    dataLongest[c.key] = String(r[c.key]).length;
+        const dataLength = {} as Record<typeof columns[number]['key'],number>;
+        columns.forEach(c=>{
+            const initLength = String(c.key).length;
+            let max = initLength;
+
+            rows.forEach(r=>{
+                const rLength = String(r[c.key]).length
+                
+                if(rLength > max){
+                    max = rLength;
                 }
             })
+
+            dataLength[c.key] = max > maxWordLength ? maxWordLength * width: max * width;
+
         })
-        const dataLength:Record<keyof T,number> = Object.create(null);
-        typedKeys(dataLongest).forEach(k =>{
-            dataLength[k] = dataLongest[k] * width;
-        })
-        
+
         return dataLength;
     
 }

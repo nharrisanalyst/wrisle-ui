@@ -20,7 +20,7 @@ function App() {
 
       {
         tableData.map(t=>(
-          <article key={t.id}>
+          <article className={styles.tableArticle} key={t.id}>
             <h3>{t.title}</h3>
             <WrisleTable columns={t.data.columns} rows={t.data.rows} itemHeight={25} />
           </article>

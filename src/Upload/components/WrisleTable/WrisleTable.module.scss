@@ -1,87 +1,79 @@
+.wrisleTable {
+  --wrisle-border: #747678;
+  --wrsile-font-color: rgb(42, 42, 42);
 
+  border: 1px solid var(--wrisle-border);
+  border-top: none;
+  border-radius: 2px;
+  color: var(--wrsile-font-color);
+  font-size: 13px;
 
-.wrisleTable{
-    --wrisle-border:#747678;
-    --wrsile-font-color:rgb(42, 42, 42); 
-    border:1px solid var(--wrisle-border);
-    border-collapse: separate;
-    border-spacing: 0;
-    color:var(--wrsile-font-color);
-    border-radius: 2px;
-    font-size: .985714286em;
-    border-spacing: 0;
-    display:flex;
-    flex-direction: column;
-    border-collapse: separate;
-    border-top: none;
-    max-height: 90dvh;
-    height:300px;
-    .wrisleSubCont{
-        display:flex;
-        flex-direction: row;
+  display: flex;
+  flex-direction: column;
 
-    .wrisleThead{
-            background-color: #eee;
-            font-weight: bold;
-            vertical-align: middle;
-            position: sticky;
-            top: 0px;
-            z-index: 1;
-        
-            border-collapse: separate;
-            display: flex;
-        }
-        .wrisleScrollControl{
-            flex-shrink: 1;
-        }
-    }
-    .wrisleTH, .wrisleTD{
-        padding:4px 3px;
-        border-right: 1px solid #ddd;
-        
-        border-color: #ddd;
-        flex:1;
-
-         &:last-child{
-            border-right:0px;
-        }
-
-    }
-    .wriseListCont{
-        overflow:hidden;
-    }
-
-    .wrisleThead{
-        border-bottom: 1px solid var(--wrisle-border);
-        border-top:1px solid var(--wrisle-border);
-        //padding-inline: 2px;
-    }
-    .wrisleTR{
-        vertical-align: middle;
-        height: 25px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        align-content: end;
-        align-items: center;
-        //padding-inline: 2px;
-       
-         &:last-child{
-            td{
-            border-bottom:0px;
-            }
-        }
-    .wrisleTD {
-        font-weight: lighter;
-        border-right: 1px solid #ddd;
-        border-bottom: 1px dotted #ddd;
-        padding: 4px 3px;
-        text-align:center;
-        height: 25px;
-        overflow: hidden;
-
-        
-        
-    }
+  height: 90dvh;
+  width: fit-content;
+  min-width: fit-content;
 }
+
+.wrisleSubCont {
+  width: fit-content;
+  min-width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrisleThead,
+.wrisleTR {
+  display: flex;
+  min-width: 0;
+  width:max-content;
+  flex: 0 0 auto;
+}
+
+.wrisleThead {
+  background-color: #eee;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-top: 1px solid var(--wrisle-border);
+  border-bottom: 1px solid var(--wrisle-border);
+}
+
+.wrisleTH,
+.wrisleTD {
+  box-sizing: border-box;
+  flex: 0 0 120px;
+  min-width: 120px;
+  padding: 4px 3px;
+  border-right: 1px solid #ddd;
+}
+
+.wrisleTH:last-child,
+.wrisleTD:last-child {
+  border-right: 0;
+}
+
+.wrisleTH {
+  text-align: left;
+}
+
+.wrisleTR {
+  height: 25px;
+  align-items: center;
+}
+
+.wrisleTD {
+  font-weight: lighter;
+  border-bottom: 1px dotted #ddd;
+  text-align: center;
+  height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.wriseListCont {
+  overflow-y: auto;
+  overflow-x: auto;
 }

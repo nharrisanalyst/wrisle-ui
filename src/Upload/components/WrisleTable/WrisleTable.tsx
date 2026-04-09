@@ -5,14 +5,20 @@ import {Row} from './Row.WrisleTable/Row.WrisleTable';
 import styles from './WrisleTable.module.scss';
 
 
-
-export interface WrisleTableProps<T> {
-     columns:{
-        key:keyof T;
+type Column<T extends object> ={
+    [K in keyof T]:{
+        key:K;
         label:string;
-        render?:(value:T[keyof T])=> ReactElement;
-     }[];
-     rows:T[]
+        render?:(value:T[K])=>ReactElement;
+    }
+}[keyof T]
+
+type Row<T extends object> = T;
+
+
+export interface WrisleTableProps<T extends object> {
+     columns:Column<T>[];
+     rows:Row<T>[];
 }
 
 interface Virtualization {
@@ -23,7 +29,7 @@ interface Virtualization {
 
 
 
-const WrisleTable=<T extends {[key:string]:string|number|null, superID:string},>({columns, rows, itemHeight}:WrisleTableProps<T> & Virtualization)=>{
+const WrisleTable=<T extends {[key:string]:string|number|null|boolean, superID:string},>({columns, rows, itemHeight}:WrisleTableProps<T> & Virtualization)=>{
    const [size] = useState(getScrollbarSize);
     
     
@@ -38,7 +44,7 @@ const WrisleTable=<T extends {[key:string]:string|number|null, superID:string},>
                 ))
             }
         </div>
-         <div className={styles.wrisleScorllControl} style={{width:size}} />
+         <div className={styles.wrisleScrollControl} style={{width:size}} />
         </div>
         <div className={styles.wriseListCont} role="table">
            <List
