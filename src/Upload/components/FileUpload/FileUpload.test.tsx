@@ -6,7 +6,6 @@ import FileUpload, {type FileUploadProps } from './FileUpload';
 
 
 const props:FileUploadProps={
-    onUpload:vi.fn<(event: React.ChangeEvent<HTMLInputElement>) => void>(),
     label:'Upload a CSV Document',
 }
 
